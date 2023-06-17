@@ -67,7 +67,7 @@ public class StationThemeActivity extends BaseActivity implements BaseQuickAdapt
             GameActivity.start(this);
             finish();
         } else if (viewId == R.id.cover_over) {
-            StationThemeIntroduceActivity.start(this, item.getIntroduceCover());
+            StationThemeIntroduceActivity.start(this, item.getIntroduceCover(), item.getAudio(), item.getBgm());
         }
     }
 

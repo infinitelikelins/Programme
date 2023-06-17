@@ -28,7 +28,7 @@ public class StationThemeRepository {
     }
 
     public final List<ThemeEntity> themes = Arrays.asList(
-            new ThemeEntity("红色印迹", "revolution") {
+            new ThemeEntity("红色印迹", "revolution","theme/dub/revolution.mp3","tts/zh/by_city_bg.mp3") {
                 @Override
                 protected void moreStation() {
                     generate(StationBlueLoad.STATION_INDEX, 1);
@@ -39,7 +39,7 @@ public class StationThemeRepository {
                     generate(StationYellowLoad.STATION_INDEX, 1);
                 }
             },
-            new ThemeEntity("绿色环保·健康生活", "protection") {
+            new ThemeEntity("绿色环保·健康生活", "protection","theme/dub/protection.mp3","tts/zh/by_city_bg.mp3") {
                 @Override
                 protected void moreStation() {
                     generate(StationBlueLoad.STATION_INDEX, 3);

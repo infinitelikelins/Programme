@@ -9,17 +9,36 @@ import java.util.Map;
 
 public class ThemeEntity {
 
+    /**
+     * 主题名称
+     */
     private final String theme;
+    /**
+     * 主题封面
+     */
     private final String cover;
+    /**
+     * 主题介绍音频
+     */
+    private final String audio;
+    /**
+     * 主题介绍页面的背景音乐
+     */
+    private final String bgm;
     private final String introduceCover;
+    /**
+     * 主题英文标签
+     */
     private final String tag;
 
     private final Map<String, List<Pair<String, String>>> loads = new HashMap<>();
 
-    public ThemeEntity(String theme, String tag) {
+    public ThemeEntity(String theme, String tag, String audio,String bgm) {
 
         this.theme = theme;
         this.tag = tag;
+        this.audio = audio;
+        this.bgm = bgm;
 
         cover = "file:///android_asset/theme/cover/" + tag + ".webp";
         introduceCover = "file:///android_asset/theme/introduce/" + tag + ".webp";
@@ -36,6 +55,14 @@ public class ThemeEntity {
 
     public String getCover() {
         return cover;
+    }
+
+    public String getAudio() {
+        return audio;
+    }
+
+    public String getBgm() {
+        return bgm;
     }
 
     public String getIntroduceCover() {
