@@ -4,18 +4,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.appcompat.widget.AppCompatImageView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bearya.robot.base.ui.BaseActivity;
 import com.bearya.robot.base.util.MusicUtil;
 import com.bearya.robot.programme.R;
-import com.bumptech.glide.Glide;
+import com.bearya.robot.programme.adapter.IntroductionAdapter;
+import com.bearya.robot.programme.entity.IntroductionEntity;
+import com.bearya.robot.programme.repository.IntroductionRepository;
+
+import java.util.Arrays;
 
 public class StationThemeIntroduceActivity extends BaseActivity {
 
-    public static void start(Context context, String introduceCover, String audio, String bgm) {
+    public static void start(Context context, String introduce, String audio, String bgm) {
         context.startActivity(new Intent(context, StationThemeIntroduceActivity.class)
-                .putExtra("introduceCover", introduceCover)
+                .putExtra("introduce", introduce)
                 .putExtra("introduceAudio", audio)
                 .putExtra("introduceBgm", bgm));
     }
@@ -29,13 +33,17 @@ public class StationThemeIntroduceActivity extends BaseActivity {
 
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
-        String theme = getIntent().getStringExtra("introduceCover");
+        String themeTagName = getIntent().getStringExtra("introduce");
         String audio = getIntent().getStringExtra("introduceAudio");
         bgm = getIntent().getStringExtra("introduceBgm");
 
-        AppCompatImageView imageView = findViewById(R.id.introduce);
+        RecyclerView introductions = findViewById(R.id.introductions);
+        IntroductionEntity[] entities = IntroductionRepository.getInstance().fetch(themeTagName);
+        IntroductionAdapter adapter = new IntroductionAdapter(Arrays.asList(entities));
+        adapter.setOnItemChildClickListener((adapter1, view, position) -> {
 
-        Glide.with(this).load(theme).into(imageView);
+        });
+        introductions.setAdapter(adapter);
 
         MusicUtil.playAssetsAudio(audio, mediaPlayer -> MusicUtil.playAssetsBgMusic(bgm));
 
