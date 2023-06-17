@@ -41,13 +41,17 @@ public class StationThemeActivity extends BaseActivity implements BaseQuickAdapt
         themeAdapter.setOnItemChildClickListener(this);
         themeAdapter.bindToRecyclerView(themeRecyclerView);
 
-        MusicUtil.playAssetsBgMusic("tts/zh/by_city_bg.mp3");
-
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onResume() {
+        super.onResume();
+        MusicUtil.playAssetsBgMusic("tts/zh/by_city_bg.mp3");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
         MusicUtil.stopBgMusic();
     }
 

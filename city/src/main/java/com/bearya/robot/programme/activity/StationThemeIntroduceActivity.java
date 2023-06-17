@@ -7,13 +7,15 @@ import android.os.Bundle;
 import androidx.appcompat.widget.AppCompatImageView;
 
 import com.bearya.robot.base.ui.BaseActivity;
+import com.bearya.robot.base.util.MusicUtil;
 import com.bearya.robot.programme.R;
 import com.bumptech.glide.Glide;
 
 public class StationThemeIntroduceActivity extends BaseActivity {
 
     public static void start(Context context, String introduceCover) {
-        context.startActivity(new Intent(context, StationThemeIntroduceActivity.class).putExtra("introduceCover", introduceCover));
+        context.startActivity(new Intent(context, StationThemeIntroduceActivity.class)
+                .putExtra("introduceCover", introduceCover));
     }
 
     @Override
@@ -28,6 +30,7 @@ public class StationThemeIntroduceActivity extends BaseActivity {
         AppCompatImageView imageView = findViewById(R.id.introduce);
 
         Glide.with(this).load(theme).into(imageView);
+
     }
 
 }
