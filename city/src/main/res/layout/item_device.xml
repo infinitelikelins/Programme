@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:layout_marginBottom="4dp"
+    android:background="@drawable/white_bg">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/im_bl_item_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="30dp"
+        android:contentDescription="@null"
+        app:srcCompat="@mipmap/settings_bluetooth_icon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_bl_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@id/im_bl_item_icon"
+        android:textColor="#ff1c96d2"
+        android:textSize="15sp" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/im_bl_item_state"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="12dp"
+        android:contentDescription="@null"
+        android:visibility="gone"
+        app:srcCompat="@drawable/bluetooth_bong_state_bg" />
+
+</RelativeLayout>

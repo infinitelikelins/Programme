@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/obstacle_bg"
+    app:layout_constraintHorizontal_chainStyle="spread">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnExit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnFix"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/back_home_bg" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnFix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnExit"
+        app:srcCompat="@drawable/fix_bg" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.bearya.robot.programme">
+
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".CityApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:allowBackup">
+
+        <activity android:name=".activity.LauncherActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.LoadingActivity" />
+        <activity android:name=".activity.CityActivity" />
+        <activity android:name=".activity.RecordActivity" />
+        <activity android:name=".activity.DiscoveryActivity" />
+        <activity android:name=".activity.HistoryActivity" />
+        <activity android:name=".activity.TellStoryActivity" />
+        <activity android:name=".activity.GameActivity" />
+        <activity android:name=".activity.StationThemeActivity" />
+        <activity android:name=".activity.StationThemeIntroduceActivity" />
+        <activity android:name=".activity.PatriotismConfigActivity" />
+        <activity android:name=".activity.PatriotismThemeActivity" />
+        <activity android:name=".station.CameraActivity" />
+        <activity android:name=".station.LibActivity" />
+        <activity android:name=".station.StationConfigActivity" />
+        <activity android:name=".station.StationsActivity" />
+        <activity android:name=".station.ImageSearchActivity" />
+        <activity android:name=".station.ImageRepositoryActivity" />
+        <activity android:name=".station.ImageSocketActivity" />
+
+        <meta-data
+            android:name="com.bearya.robot.base.util.MyGlideModule"
+            android:value="GlideModule" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.bearya.robot.programme"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+    </application>
+
+</manifest>

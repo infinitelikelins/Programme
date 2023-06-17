@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@mipmap/station_bg1">
+
+    <ImageView
+        android:id="@+id/ivPreView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="32dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_listener_selector"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/ivSound"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/ivSound"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivSound" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSecondPreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/ivPreView"
+        app:layout_constraintEnd_toEndOf="@+id/ivPreView"
+        app:layout_constraintTop_toBottomOf="@+id/ivPreView"
+        app:layout_constraintBottom_toBottomOf="@+id/ivPreView"
+        app:layout_constraintVertical_bias="1.2"
+        android:lineSpacingExtra="3dp"
+        android:paddingTop="8dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:textSize="14sp"/>
+
+    <ImageView
+        android:id="@+id/ivSound"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_mic_selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivPreView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSecondRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/ivSound"
+        app:layout_constraintEnd_toEndOf="@+id/ivSound"
+        app:layout_constraintTop_toBottomOf="@+id/ivSound"
+        app:layout_constraintBottom_toBottomOf="@+id/ivSound"
+        app:layout_constraintVertical_bias="1.2"
+        android:lineSpacingExtra="3dp"
+        android:paddingTop="40dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:textSize="14sp"/>
+
+    <Button
+        android:id="@+id/btnSoundLib"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@null"
+        android:drawableTop="@mipmap/ic_lib_sound"
+        android:text="@string/voice_lib"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+<ImageView
+        android:id="@+id/ivPreView1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_bias="0.5"
+    android:visibility="gone"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <ImageView
+        android:id="@+id/ivSoundEmpty"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerInside"
+        android:visibility="gone"
+        android:src="@mipmap/ic_sound_default"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

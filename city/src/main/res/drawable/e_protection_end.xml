@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+
+    <item android:drawable="@mipmap/e_p_faucet_end_01"  android:duration="200"/>
+    <!--<item android:drawable="@mipmap/e_p_faucet_end_03"  android:duration="200"/>-->
+    <item android:drawable="@mipmap/e_p_faucet_end_05"  android:duration="200"/>
+    <!--<item android:drawable="@mipmap/e_p_faucet_end_07"  android:duration="200"/>-->
+    <!--<item android:drawable="@mipmap/e_p_faucet_end_09"  android:duration="200"/>-->
+    <item android:drawable="@mipmap/e_p_faucet_end_11"  android:duration="200"/>
+    <!--<item android:drawable="@mipmap/e_p_faucet_end_13"  android:duration="200"/>-->
+    <item android:drawable="@mipmap/e_p_faucet_end_17"  android:duration="200"/>
+    <!--<item android:drawable="@mipmap/e_p_faucet_end_19"  android:duration="200"/>-->
+    <!--<item android:drawable="@mipmap/e_p_faucet_end_21"  android:duration="200"/>-->
+    <item android:drawable="@mipmap/e_p_faucet_end_23"  android:duration="200"/>
+    <!--<item android:drawable="@mipmap/e_p_faucet_end_25"  android:duration="200"/>-->
+    <item android:drawable="@mipmap/e_p_faucet_end_27"  android:duration="200"/>
+    <!--<item android:drawable="@mipmap/e_p_faucet_end_29"  android:duration="200"/>-->
+    <!--<item android:drawable="@mipmap/e_p_faucet_end_31"  android:duration="200"/>-->
+    <item android:drawable="@mipmap/e_p_faucet_end_33"  android:duration="200"/>
+    <!--<item android:drawable="@mipmap/e_p_faucet_end_35"  android:duration="200"/>-->
+    <item android:drawable="@mipmap/e_p_faucet_end_37"  android:duration="200"/>
+    <!--<item android:drawable="@mipmap/e_p_faucet_end_39"  android:duration="200"/>-->
+    <!--<item android:drawable="@mipmap/e_p_faucet_end_41"  android:duration="200"/>-->
+    <item android:drawable="@mipmap/e_p_faucet_end_43"  android:duration="200"/>
+    <!--<item android:drawable="@mipmap/e_p_faucet_end_45"  android:duration="200"/>-->
+    <item android:drawable="@mipmap/e_p_faucet_end_47"  android:duration="200"/>
+    <!--<item android:drawable="@mipmap/e_p_faucet_end_49"  android:duration="200"/>-->
+    <!--<item android:drawable="@mipmap/e_p_faucet_end_53"  android:duration="200"/>-->
+    <item android:drawable="@mipmap/e_p_faucet_end_55"  android:duration="200"/>
+    <!--<item android:drawable="@mipmap/e_p_faucet_end_57"  android:duration="200"/>-->
+    <item android:drawable="@mipmap/e_p_faucet_end_59"  android:duration="200"/>
+    <!--<item android:drawable="@mipmap/e_p_faucet_end_61"  android:duration="200"/>-->
+
+</animation-list>

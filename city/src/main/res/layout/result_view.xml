@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#aa000000"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/leftView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivLightView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:contentDescription="@null"
+            android:src="@mipmap/bg_light" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:contentDescription="@null"
+            android:src="@mipmap/ico_success" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivStarView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:contentDescription="@null"
+            android:src="@mipmap/ico_star" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/rightView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:scaleX="0"
+        android:scaleY="0"
+        android:visibility="visible"
+        tools:scaleX="1"
+        tools:scaleY="1">
+
+        <LinearLayout
+            android:layout_width="243dp"
+            android:layout_height="270dp"
+            android:background="@mipmap/frame_bg"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingStart="45dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@null"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/ico_gold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/gold_count" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvGold"
+                    style="@style/text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@null"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/ico_step" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/step_count" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvStep"
+                    style="@style/text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@null"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/ico_help" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/problem_count" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvGoodDone"
+                    style="@style/text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@null"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/map_icon" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/dream_count" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvStationLoad"
+                    style="@style/text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="0" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/flag" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/flag_count" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvFlagLoad"
+                    style="@style/text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="0" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="4dp"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/known" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/knowledge_count" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvKnownLoad"
+                    style="@style/text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="0" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btns"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnExit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:src="@drawable/exit_bg" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnRestart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:src="@drawable/replay_bg" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnBackHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:src="@drawable/back_home_bg"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/saveHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:src="@drawable/save_game_selector" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,309 @@
+@startuml
+interface ICar{
+ void drive()
+ interface DriveListener
+}
+interface DriveListener{
+
+  void onException(DriveException exception,Object param);
+  void onDriveResult(DriveResult result);
+  void onChoiceLoadEntrance(LoadEntrance loadEntrance);
+  void onChoiceUnSupportEntrance(Direct unsupportDirect);
+  void onChoiceSupportEntrance(Direct userChoiceDirect);
+  void onChoiceEntranceTimeout();
+  void onGreenLight();
+  void onWaitGreenLight(RgyLight light, int delay);
+  void onScanOidCardRight(int oid);
+  void onScanOidCardWrong(int oid);
+  void onScanOidCardTimeout();
+}
+interface CanDataListener
+interface CanDataListener {
+    void onFrontOid(int oid);
+    void onBackOid(int oid);
+    void onTalkpenOid(int oid);
+    void onTouchBody(Body body);
+}
+BaseActivity <|-- GameActivity
+class BaseActivity{
+    ..private..
+    - ViewGroup mRootVie
+    - {static}ArrayList mActivityList
+
+    ..public..
+    + int classType
+    + {static}int LARGE_CLASS
+    + {static}int STUDENT_CLASS
+    + {static}int SMALL_CLASS
+    ..method..
+    ..public..
+    + void addView(View view , Object tag)
+    + void addView(View view , Object tag, ViewGroup.LayoutParams params)
+    + void removeView(Object tag)
+    + {static}void finishAllActivity()
+    + {static}BaseActivity getTopActivity()
+    + {static}String getString(String key, String defaultValue)
+    ..protected..
+    # boolean isExist(Object tag)
+    # boolean getViewByTag(Object tag)
+    ..private..
+    - void add()
+}
+
+class GameActivity{
+ ..private..
+ - LottieAnimatinView lottieView
+ - FrameSurfaceView surfaceView
+ - TextView logView
+ - RobotCar robotCar
+ - SimpleDateFormat simpleDateFormat
+ - ICar.DriveListener driveListener
+ ..public..
+ + {static}String EXCEPTION_VIEW_TAG
+ + {static}String RESULT_VIEW_TAG
+ ..method..
+ + void onClearLogClicked(View view)
+ + void onViewHistoryClicked(View view)
+ + void onRestartClicked(View view)
+ + void onViewLogClicked(View view)
+ - void jump(Class<? extends Activity> class, String param)
+ - void appendLog(final String log)
+ - void playEmotion(String fileName)
+ - void setScreenClickListener(ScreenClickListener screenClickListener)
+}
+
+
+
+note "driveListener" as R1
+GameActivity *.. R1
+R1 ..> RobotCar
+
+note "CanDataListener" as R2
+RobotCar *- R2
+R2 -> CanManager
+
+note "lottieView \n surfaceView" as D1
+GameActivity <.. D1
+D1 ..> Director
+class Director{
+    - Map<String,LoadPlay> loadPlayMap //待执行的动画和音频集合
+    - LoadPlay loadPlay //待播数据
+    - PlayData playData //播放数据实体类
+    - String soundParam //需要格式化的播放文件名称
+    - boolean isDouble //是否同时有音频和动画
+    - LottieAnimationView view //执行动画的View
+
+    + void setView(LottieAnimationView view)
+    + LottieAnimationView getView()
+    + void register(String key,LoadPlay loadPlay) //注册要播放的音视频
+    + void director(String key, PlayListener listener)//播放注册好的音视频
+    + void director(String key, String soundParam, PlayListener listener)//播放注册好的音视频
+
+    - void directNext()//执行下一组动画 音频播放
+    - void directPlay(PlayData playData)//播放音视频
+    - void playFace(FacePlay faceplay) //对动画种类进行判断执行对应的播放方法
+
+}
+
+Director <..> AnimationsContainer :AnimationsContainer.OnAnimationStoppedListener \n//执行动画监听
+
+class AnimationsContainer{
+    + int FPS //帧数
+    - int resId //图片资源Id
+    - FramesSequenceAnimation animation //执行动画的内部类
+
+    + FramesSequenceAnimation createProgressDialogAnim(LottieAnimationView imageView) //创建动画执行类
+
+}
+AnimationsContainer *--> FramesSequenceAnimation : LottieAnimationView\n 播放帧动画的View
+class FramesSequenceAnimation{
+     - boolean isRepair //是否循环播放
+     - BitmapFactory.Options mBitmapOptions //设置BitMap优化参数
+     - BitMap mBitMap
+     - int mDelayMillis //帧动画播放间隔
+     - int[] mFrames; // 帧数组
+     - int mIndex; // 当前帧
+     - boolean mShouldRun; // 开始/停止播放用
+     - boolean mIsRunning; // 动画是否正在播放，防止重复播放
+     - SoftReference<LottieAnimationView> mSoftReferenceImageView // 软引用ImageView，以便及时释放掉
+     - Handler mHandler
+     - OnAnimationStoppedListener mOnAnimationStoppedListener //播放停止监听
+     - int getNext() //播放下一帧
+     - int[] getData(int resId)//从XML中读取帧数组
+
+
+     + void setRepair(boolean repair) //设置是否循环播放
+     + synchronized void start() //开始播放帧动画
+     + synchronized void stop() //停止播放帧动画
+     + void release() //释放资源
+     + void setOnAnimStopListener(OnAnimationStoppedListener listener)//设置停止播放监听
+}
+class CanManager{
+    + void addListener(CanDataListener listener)//设置监听
+    + void removeListener(CanDataListener listener)//移除监听
+    + int parseToOid(byte[] data)//将btye转换成Oid
+    + void onVoiceDesData(byte[] data)//音量 -
+    + void onVoiceIncData(byte[] data)//音量 +
+    + void startScan() //开始读取数据
+
+....
+    - void changeVolume(boolean isIncr)//改变音量
+    - int openCan() //开启小贝读头
+    - int get(int index)//从Can缓冲区读取数据
+    - void onTouch(Body body,String effect)//小贝触摸事件
+    - void onReadData() //读取数据
+    - void onCanDataType(CanDataType dataType) //对读取上来的数据进行分类处理
+
+}
+
+CanManager --> RobotActionManager : 发送心跳包
+class RobotActionManager{
+    +{static} void sendHeartBeat()//发送心跳包
+    +{static} void openSensor()//打开避障传感器
+    +{static} void closeSensor()//关闭避障传感器
+    +{static} void handShake()//握手
+    +{static} void send(byte[] bytes)//开始发送数据
+    +{static} void ctrlEarLight(final int color, final int brightness) //同时控制左右耳灯光
+    +{static} void void ctrlLeftHandLight(LightMode mode, LightColor color, int frequency)//控制左手灯光
+    +{static} void ctrlRightHandLight(LightMode mode, LightColor color, int frequency)//控制右手灯光
+    +{static} void reset()//复位
+    +{static} void resetSpeed()//移动速度复位
+    +{static} void stopWheel() //停止前进
+    +{static} void goAhead(int leftSpeed, int rightSpeed,String caller) //前进
+    +{static} void goBack(int leftSpeed, int rightSpeed,String caller) //后退
+    +{static} void turnLeft(int leftSpeed, int rightSpeed,String caller) //原地左转
+    +{static} void turnRight(int leftSpeed, int rightSpeed,String caller) //原地右转
+    +{static} void move(int mode, int leftSpeed, int rightSpeed,String caller) //移动
+    +{static} void ctrlLeftHand(int position, int speed, int times) //控制左手
+    +{static} void ctrlRighttHand(int position, int speed, int times) //控制右手
+    +{static} int ctrLight(int where,LightMode mode,LightColor color,int frequency) //控制灯光
+    +{static} ctrlLight(int where, int mode, int color, int frequency)// 控制灯光
+    +{static} void ctrlHomeLight(LightMode mode, LightColor color, int frequency)//控制Home键灯光
+    +{static} static void closeUsbLight()//关闭usb灯
+    +{static} static void closeEarLight()//关闭左右耳呼吸灯
+    ....
+    -{static} void handleHand(byte speed,byte flag) //处理握手
+
+}
+RobotActionManager ..> LightColor
+enum LightColor {
+    ..灯光颜色..
+   RED(0x0)
+   YELLO(0x1)
+   GREEN(0x2)
+   CYAN(0x3)
+   BLUE(0x4)
+   PURPLE(0x5)
+   WHITE(0x6)
+   RANDOM(0x7)
+
+    - int value
+    + int getValue()
+}
+RobotActionManager ..> LightMode
+enum LightMode{
+    ..灯光模式..
+    CLOSE(0X0)    //关闭
+    STROBE(0X1)    //频闪
+    BREATHE(0X2)   //呼吸
+    SINGLE_BREATHE(0X3)   //单色呼吸
+    - int value
+    + int getValue
+}
+
+RobotCar --|> ICar
+RobotCar --|> CanDataListener
+RobotCar --|> DriveListener
+RobotCar : +void release() //释放缓存
+RobotCar : -DriveController driveController //事件控制器
+RobotCar : -RobotOidReaderRater robotOidReaderRater //解码器
+RobotCar : -Runnable driveRunnable //小贝行走线程
+note "RobotOidReaderRater.OidReaderEmptyListener" as readerListener
+RobotOidReaderRater <-- readerListener
+readerListener --* RobotCar
+class RobotOidReaderRater{
+      - Runnable headerEmptyRunnable //前读头为空时启用
+      - Runnable tailerEmptyRunnable //前后读头都为空时启用
+      - Handler handler //延时执行run方法
+      - long during //延时执行的毫秒
+      - boolean tailEmpty //后读头是否为null
+      - boolean headEmpty //前读头是否为null
+
+      + void release //释放资源
+      + void addHeaderOid
+      + void addTailerOid()
+}
+
+DriveController <--* RobotCar : DriveListener listener
+
+class DriveController{
+    -RecognitionLoadState recognitionLoadState //识别地垫状态
+    -NewLoadState newLoadState //进入新地垫状态
+    -ComputeExitPathState computeExitPathState //计算出口路劲状态
+    -UnLockingState unLockingState //待解锁状态
+    -TravelState travelState //寻迹状态
+    -ArriveTargetState arriveTargetState //到达目标点状态
+    -ExitLoadState exitLoadState //走出当前地垫状态
+    -InObstacleState inObstacleState //避障区状态
+    -OutOfLoadState outOfLoadState //走出地垫状态
+....
+    +BaseLoad getCurrentLoad() //获取当前地垫
+    +void onOidPathComplete() //oid路劲走完
+    +void nextTarget() //获取下一个目标点
+    +int getFaceOid() //调整至朝向点去
+    + int getAngle(int target) //计算前读头与目标点的角度
+    ....
+    - void setRecognitionLoadState() //设定为识别地垫状态
+    - void setNewLoadState() // 设定为进入新地垫状态
+    - void setComputeExitPathState() //设定为计算出口状态
+    - void setUnLockingState() //设定为待解锁状态
+    - void setTravelState() //设定为寻迹状态
+    - void setArriveTargetState() //设定为到达目标点状态
+    - void setExitLoadState() //设定为走出当前地垫状态
+    - void setInObstacleState(InObstacleReason reason)//设定为避障区状态
+    - void setOutOfLoadState() //设定为走出地垫状态
+}
+
+note "DeivController" as  devi
+devi .> DriveController
+WheelController <. devi
+WheelController *..> MakeSureAngleAndTurnDirect
+class WheelController{
+    - IState mMakeSureAngleAndTurnDirect //计算直走还是转弯控制状态
+    - IState mWalking //
+    - IState mArrivePassShop //
+    - IState mStopState //
+    ....
+    # int computeAngle() //计算角度
+    # void goWithSpeed(int ls,int rs) //轮子运转速度控制
+    # void turnLeft(int angle,boolean isRotate) //原地左转
+    # void turnRight(int angle,boolean isRotate) //原地右转
+
+    ....
+    + void stop() //停止前进
+    + void release() //释放内存
+    + void starDrive() //开启行走控制
+    + void setState(IState state)//设置控制状态
+    + boolean isArriveAndFaceTarget() //是否到达终点且完成转向
+    + boolean isArrive() //是否到达目标点
+    ....
+
+}
+
+class MakeSureAngleAndTurnDirect{
+    - TurnFlag turnFlag //方向
+    - boolean rotateComplete(int angle)//旋转角度是否完成
+    -  void makeSureAgnleAndTurnDirect()
+    - void reset() //重置方向
+    - TurnFlag getTurnDirect(int angle) //判断方向
+    # boolean angleNearZero(int angle) //是否在误差范围内
+    + int allowErrorAngle() //误差范围
+
+}
+MakeSureAngleAndTurnDirect ..> TurnFlag
+enum TurnFlag{
+        UNKNOW,
+        TURN_LEFT,
+        TURN_RIGHT;
+    }
+@enduml

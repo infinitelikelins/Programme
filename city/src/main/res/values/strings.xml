@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">Programme</string>
+    <string name="long_click_delete">长按创作删除</string>
+    <string name="result_gold">金币：%d</string>
+    <string name="result_step">步数：%d</string>
+    <string name="result_good_done">解决问题：%d</string>
+    <string name="perform">表演</string>
+    <string name="tell">讲故事</string>
+    <string name="cancel">取消</string>
+    <string name="sure">确定</string>
+    <string name="show_right_now">立即观看</string>
+    <string name="three_second">3秒</string>
+    <string name="four_second">4秒</string>
+    <string name="five_second">5秒</string>
+    <string name="six_second">6秒</string>
+    <string name="seven_second">7秒</string>
+    <string name="eight_second">8秒</string>
+    <string name="nine_second">9秒</string>
+    <string name="ten_second">10秒</string>
+    <string name="fifteen_second">15秒</string>
+    <string name="twenty_second">20秒</string>
+    <string name="some_second">%d秒</string>
+    <string name="choose_time">选择时间</string>
+    <string name="image_search_empty">暂无搜索结果</string>
+    <string name="history_work_empty">暂无创作作品保存记录</string>
+    <string name="delete_work">确定要删除该创作作品吗?</string>
+    <string name="delete_success">删除成功</string>
+    <string name="save_success_again">作品已保存</string>
+    <string name="save_success">保存成功，到我的创作中观看</string>
+    <string name="clear_all_station_config">确定要删除小站所有配置吗?</string>
+    <string name="clear_all_patriotism_config">确定要删除主题所有配置吗?</string>
+    <string name="show_again">故事讲完啦，再讲一次吗?</string>
+    <string name="show_finish">结束观看</string>
+    <string name="tell_again">再讲一次</string>
+    <string name="travel_go">即刻出发</string>
+    <string name="no_tell_story">没有可以讲述的故事</string>
+    <string name="gold_count">金 币:</string>
+    <string name="step_count">步 数:</string>
+    <string name="problem_count">解决问题:</string>
+    <string name="dream_count">创想模块:</string>
+    <string name="flag_count">红旗模块:</string>
+    <string name="knowledge_count">知识模块:</string>
+    <string name="voice">声音</string>
+    <string name="image">图片</string>
+    <string name="action">动作</string>
+    <string name="voice_lib">音频库</string>
+    <string name="image_lib">系统图库</string>
+    <string name="shake_hand_left_right">摆双臂</string>
+    <string name="shake_hand_left">举左手</string>
+    <string name="shake_hand_right">举右手</string>
+    <string name="turn_head">转头</string>
+    <string name="turn_head_left">左转头</string>
+    <string name="turn_head_right">右转头</string>
+    <string name="clear_config">清理配置</string>
+    <string name="casting">投屏</string>
+    <string name="recording">记录</string>
+    <string name="bluetooth">蓝牙</string>
+    <string name="make_cast">确定投屏</string>
+    <string name="bluetooth_casting">蓝牙(正在投屏中)</string>
+    <string name="bluetooth_closing">正在关闭蓝牙</string>
+    <string name="bluetooth_opening">正在打开蓝牙</string>
+    <string name="work_no">创作号 : %d</string>
+    <string name="local_pic">我的图库</string>
+    <string name="local_image_empty">
+        图库暂无图片\n
+        你可以点击右上角的照片同步按钮来同步你的照片
+    </string>
+    <string name="put_center">
+        请将小贝放在地垫上。\n
+        如果小贝在地垫上没有正常开始行走，请尝试退出应用，
+        在小贝表情界面下触摸小贝头部几次，再重新进入应用使用。
+    </string>
+    <string name="qr_code_warning">
+        使用App扫描下面的二维码上传图片。\n
+        注意确认手机和小贝都接入同样的WIFI网络。\n
+        联网上传图片过程中请勿离开此页面，等待图片上传完成。\n
+    </string>
+    <string name="qr_code_no_net">
+        \n服务未创建成功，请确认是否已接入WIFI网络！\n
+    </string>
+    <string name="sync_pic">照片同步</string>
+</resources>

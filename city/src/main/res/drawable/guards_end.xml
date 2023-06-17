@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+
+
+    <item android:drawable="@mipmap/guards_5"  android:duration="200"/>
+    <item android:drawable="@mipmap/guards_6"  android:duration="200"/>
+    <item android:drawable="@mipmap/guards_7"  android:duration="200"/>
+    <item android:drawable="@mipmap/guards_8"  android:duration="200"/>
+    <item android:drawable="@mipmap/guards_9"  android:duration="200"/>
+    <item android:drawable="@mipmap/guards_10" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_11" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_12" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_13" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_14" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_15" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_16" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_17" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_18" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_19" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_20" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_21" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_22" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_23" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_24" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_25" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_26" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_27" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_28" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_29" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_30" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_31" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_32" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_33" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_34" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_35" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_36" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_37" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_38" android:duration="200"/>
+    <item android:drawable="@mipmap/guards_39" android:duration="200"/>
+
+</animation-list>

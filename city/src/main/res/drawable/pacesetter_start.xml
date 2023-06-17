@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+
+    <item android:drawable="@mipmap/pacesetter1_1"  android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_2"  android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_3"  android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_4"  android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_5"  android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_6"  android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_7"  android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_8"  android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_9"  android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_10" android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_11" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_12" android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_13" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_14" android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_15" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_16" android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_17" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_18" android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_19" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_20" android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_21" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_22" android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_23" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_24" android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_25" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_26" android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_27" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_28" android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_29" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_30" android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_31" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_32" android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_33" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_34" android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_35" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_36" android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_37" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_38" android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_39" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_40" android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_41" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_42" android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_43" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_44" android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_45" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_46" android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_47" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_48" android:duration="200"/>-->
+    <item android:drawable="@mipmap/pacesetter1_49" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/pacesetter1_50" android:duration="200"/>-->
+</animation-list>

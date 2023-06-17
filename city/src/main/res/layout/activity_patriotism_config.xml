@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/patriotism_bg">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnStation7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"
+        android:tag="patriotism"
+        app:layout_constraintBottom_toTopOf="@+id/btnStation10"
+        app:layout_constraintEnd_toStartOf="@+id/btnStation8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:srcCompat="@drawable/station_patriotism_selector" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnStation8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:tag="history"
+        app:layout_constraintBottom_toBottomOf="@+id/btnStation7"
+        app:layout_constraintEnd_toStartOf="@+id/btnStation9"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/btnStation7"
+        app:layout_constraintTop_toTopOf="@+id/btnStation7"
+        app:srcCompat="@drawable/station_history_selector" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnStation9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tag="culture"
+        app:layout_constraintBottom_toBottomOf="@+id/btnStation7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/btnStation8"
+        app:layout_constraintTop_toTopOf="@+id/btnStation7"
+        app:srcCompat="@drawable/station_culture_selector" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnStation10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="4dp"
+        android:tag="science"
+        app:layout_constraintBottom_toTopOf="@+id/btnPerform"
+        app:layout_constraintEnd_toEndOf="@+id/btnStation7"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/btnStation7"
+        app:layout_constraintTop_toBottomOf="@+id/btnStation7"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:srcCompat="@drawable/station_science_tech_selector" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnStation11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tag="festival"
+        app:layout_constraintBottom_toBottomOf="@+id/btnStation10"
+        app:layout_constraintEnd_toEndOf="@+id/btnStation8"
+        app:layout_constraintStart_toStartOf="@+id/btnStation8"
+        app:srcCompat="@drawable/station_festival_selector" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnStation12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tag="scenic"
+        app:layout_constraintBottom_toBottomOf="@+id/btnStation10"
+        app:layout_constraintEnd_toEndOf="@+id/btnStation9"
+        app:layout_constraintStart_toStartOf="@+id/btnStation9"
+        app:srcCompat="@drawable/station_scenic_spots_selector" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/btn_back" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnPerform"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/go_right_now" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/clear_patriotism_config"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@mipmap/btn_station_clear"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="@string/clear_config"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

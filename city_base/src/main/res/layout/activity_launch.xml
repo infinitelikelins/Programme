@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/content_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.bearya.robot.base.ui.view.RippleImageView
+        android:id="@+id/rippleImageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="200dp"
+        android:layout_marginBottom="10dp"
+        app:imageViewHeigth="20dp"
+        app:imageViewWidth="20dp"
+        app:show_spacing_time="120" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/fingerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/rippleImageView"
+        android:layout_alignBottom="@id/rippleImageView"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="35dp"
+        android:contentDescription="@null"
+        app:srcCompat="@mipmap/finger" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnBack"
+        style="@style/backButton"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="@null"
+        android:padding="20dp"
+        app:srcCompat="@mipmap/btn_back" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/my_working"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="@null"
+        android:padding="16dp"
+        app:srcCompat="@drawable/ic_working" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:drawableTop="@mipmap/record"
+        android:drawablePadding="5dp"
+        android:gravity="center"
+        android:padding="18dp"
+        android:text="@string/recording"
+        android:textColor="#3D4C63" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/casting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@id/record"
+        android:drawableTop="@mipmap/casting"
+        android:drawablePadding="6dp"
+        android:gravity="center"
+        android:padding="18dp"
+        android:text="@string/casting"
+        android:textColor="#3D4C63" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+
+</RelativeLayout>

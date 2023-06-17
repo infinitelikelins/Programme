@@ -1,0 +1,75 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'BeiYa'
+            storePassword 'BeiYa123'
+            storeFile file('../bearya_keystore.jks')
+            keyPassword 'BeiYa!@#'
+        }
+    }
+    buildFeatures {
+        dataBinding true
+    }
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        applicationId rootProject.ext.city.appid
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.city.versionCode
+        versionName rootProject.ext.city.versionName
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+        ndk {
+            abiFilters 'armeabi-v7a'
+        }
+        ndkVersion "21.3.6528147"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                outputFileName = "${rootProject.ext.city.name}_${variant.versionCode}_v${variant.versionName}_branch.apk"
+            }
+    }
+
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            def requested = details.requested
+            if (requested.group == 'com.android.support') {
+                if (!requested.name.startsWith("multidex")) {
+                    details.useVersion '25.1.0'
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    implementation project(':city_base')
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.github.razerdp:BasePopup:2.2.20'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.35'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
+}

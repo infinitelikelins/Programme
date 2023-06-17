@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+
+    <item android:drawable="@mipmap/escape_1"  android:duration="200"/>
+    <!--<item android:drawable="@mipmap/escape_2" android:duration="200"/>-->
+    <item android:drawable="@mipmap/escape_3" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/escape_4" android:duration="200"/>-->
+    <item android:drawable="@mipmap/escape_5" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/escape_6" android:duration="200"/>-->
+    <item android:drawable="@mipmap/escape_7" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/escape_8" android:duration="200"/>-->
+    <item android:drawable="@mipmap/escape_9" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/escape_10" android:duration="200"/>-->
+    <item android:drawable="@mipmap/escape_11" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/escape_12" android:duration="200"/>-->
+    <item android:drawable="@mipmap/escape_13" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/escape_14" android:duration="200"/>-->
+    <item android:drawable="@mipmap/escape_15" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/escape_16" android:duration="200"/>-->
+    <item android:drawable="@mipmap/escape_17" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/escape_18" android:duration="200"/>-->
+    <item android:drawable="@mipmap/escape_19" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/escape_20" android:duration="200"/>-->
+    <item android:drawable="@mipmap/escape_21" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/escape_22" android:duration="200"/>-->
+    <item android:drawable="@mipmap/escape_23" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/escape_24" android:duration="200"/>-->
+    <item android:drawable="@mipmap/escape_25" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/escape_26" android:duration="200"/>-->
+    <item android:drawable="@mipmap/escape_27" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/escape_28" android:duration="200"/>-->
+    <item android:drawable="@mipmap/escape_29" android:duration="200"/>
+    <!--<item android:drawable="@mipmap/escape_30" android:duration="200"/>-->
+</animation-list>

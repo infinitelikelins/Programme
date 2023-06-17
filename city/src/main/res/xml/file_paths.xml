@@ -1,0 +1,16 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <paths>
+        <!--代表app 私有的存储区域 Context.getFilesDir()目录下的images目录 /data/user/0/com.android.xnsports/files/images -->
+        <files-path path="images" name="xn_private_images" />
+        <cache-path path="files" name="cache" />
+        <external-path path="files" name="external" />
+        <!--代表app 外部存储区域根目录下的文件 Context.getExternalFilesDir(Environment.DIRECTORY_DCIM)目录下的Pictures目录-->
+        <!--  /storage/emulated/0/Android/data/com.android.xnsports/files/DCIM/ -->
+        <external-files-path path="DCIM" name="xn_external_dcim"/>
+        <!--代表app 外部存储区域根目录下的文件 Context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOAD)目录下的Pictures目录-->
+        <!--  /storage/emulated/0/Android/data/com.android.xnsports/files/DOWNLOAD/ -->
+        <external-files-path path="DOWNLOAD" name="xn_external_download"/>
+        <!-- 此标签需要 support 25.0.0以上才可以使用-->
+        <external-cache-path  path="files" name="external_cache"/>
+    </paths>
+</resources>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/half_transparent">
+
+    <com.bearya.robot.base.ui.view.NiceImageView
+        android:id="@+id/leftView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:border_color="#F6E6CD"
+        app:border_width="4dp"
+        app:corner_radius="12dp"
+        app:is_cover_src="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/rightView"
+        app:layout_constraintHeight_percent="0.7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.4"
+        tools:srcCompat="@mipmap/choose_119" />
+
+    <com.bearya.robot.base.ui.view.NiceImageView
+        android:id="@+id/rightView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:border_color="#F6E6CD"
+        app:border_width="4dp"
+        app:corner_radius="12dp"
+        app:is_cover_src="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.7"
+        app:layout_constraintStart_toEndOf="@id/leftView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.4"
+        tools:srcCompat="@mipmap/choose_120" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/centerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#AA000000"
+        android:scaleType="centerInside"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/do_error_anim"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
