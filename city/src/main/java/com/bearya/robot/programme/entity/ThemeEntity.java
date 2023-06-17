@@ -2,15 +2,10 @@ package com.bearya.robot.programme.entity;
 
 import android.util.Pair;
 
-import com.bearya.robot.programme.walk.load.StationBlueLoad;
-import com.bearya.robot.programme.walk.load.StationGreenLoad;
-import com.bearya.robot.programme.walk.load.StationPinkLoad;
-import com.bearya.robot.programme.walk.load.StationPurpleLoad;
-import com.bearya.robot.programme.walk.load.StationRedLoad;
-import com.bearya.robot.programme.walk.load.StationYellowLoad;
-
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ThemeEntity {
 
@@ -19,34 +14,15 @@ public class ThemeEntity {
     private final String introduceCover;
     private final String tag;
 
-    private final List<Pair<String, String>> blueLoad;
-    private final List<Pair<String, String>> redLoad;
-    private final List<Pair<String, String>> greenLoad;
-    private final List<Pair<String, String>> pinkLoad;
-    private final List<Pair<String, String>> purpleLoad;
-    private final List<Pair<String, String>> yellowLoad;
+    private final Map<String, List<Pair<String, String>>> loads = new HashMap<>();
 
-    public ThemeEntity(String theme, String tag, int blueCount, int redCount, int greenCount, int pinkCount, int purpleCount, int yellowCount) {
+    public ThemeEntity(String theme, String tag) {
 
         this.theme = theme;
         this.tag = tag;
 
         cover = "file:///android_asset/theme/cover/" + tag + ".webp";
         introduceCover = "file:///android_asset/theme/introduce/" + tag + ".webp";
-
-        blueLoad = new ArrayList<>();
-        redLoad = new ArrayList<>();
-        greenLoad = new ArrayList<>();
-        pinkLoad = new ArrayList<>();
-        purpleLoad = new ArrayList<>();
-        yellowLoad = new ArrayList<>();
-
-        generate(blueLoad, StationBlueLoad.STATION_INDEX, blueCount);
-        generate(redLoad, StationRedLoad.STATION_INDEX, redCount);
-        generate(greenLoad, StationGreenLoad.STATION_INDEX, greenCount);
-        generate(pinkLoad, StationPinkLoad.STATION_INDEX, pinkCount);
-        generate(purpleLoad, StationPurpleLoad.STATION_INDEX, purpleCount);
-        generate(yellowLoad, StationYellowLoad.STATION_INDEX, yellowCount);
 
     }
 
@@ -66,23 +42,25 @@ public class ThemeEntity {
         return introduceCover;
     }
 
-    private void generate(List<Pair<String, String>> loadData, int stationIndex, int count) {
+    protected void generate(int stationIndex, int count) {
+        List<Pair<String, String>> loadData = new ArrayList<>();
         for (int i = 1; i <= count; i++) {
             String entity = tag + "_" + stationIndex + "_" + i;
             loadData.add(new Pair<>("theme/music/" + entity + ".mp3", "file:///android_asset/theme/face/" + entity + ".webp"));
         }
+        loads.put("station_" + stationIndex, loadData);
+    }
+
+    /**
+     * 这里可以更多的小站数据
+     */
+    protected void moreStation() {
+
     }
 
     public List<Pair<String, String>> fetch(int stationIndex) {
-        switch (stationIndex) {
-            case StationBlueLoad.STATION_INDEX: return blueLoad;
-            case StationRedLoad.STATION_INDEX: return redLoad;
-            case StationGreenLoad.STATION_INDEX: return greenLoad;
-            case StationPinkLoad.STATION_INDEX: return pinkLoad;
-            case StationPurpleLoad.STATION_INDEX: return purpleLoad;
-            case StationYellowLoad.STATION_INDEX: return yellowLoad;
-            default: return new ArrayList<>();
-        }
+        List<Pair<String, String>> pairs = loads.get("station_" + stationIndex);
+        return pairs == null ? new ArrayList<>() : pairs;
     }
 
 }
