@@ -19,16 +19,16 @@ public class IntroductionRepository {
 
     public final IntroductionEntity[] fetch(String itemName) {
         switch (itemName) {
-            case "":
+            case "revolution":
                 return introductionContents;
-            default: return new IntroductionEntity[]{};
+            default:
+                return new IntroductionEntity[]{};
         }
     }
 
     private final IntroductionEntity[] introductionContents = new IntroductionEntity[]{
-            new IntroductionEntity(IntroductionEntity.AUDIO, "", ""),
-            new IntroductionEntity(IntroductionEntity.VIDEO, "", ""),
-            new IntroductionEntity(IntroductionEntity.PICTURE, "", ""),
+            new IntroductionEntity(IntroductionEntity.PHOTO, "theme/introduce/revolution.webp", "theme/dub/revolution.mp3"),
+            new IntroductionEntity(IntroductionEntity.AUDIO, "theme/introduce/protection.webp", "theme/dub/protection.mp3"),
     };
 
 }

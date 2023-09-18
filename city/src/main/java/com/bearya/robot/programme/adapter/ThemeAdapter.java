@@ -26,7 +26,7 @@ public class ThemeAdapter extends BaseQuickAdapter<ThemeEntity, BaseViewHolder> 
         helper.setText(R.id.name, item.getTheme());
         Glide.with(context).load(item.getCover()).into(((AppCompatImageView) helper.getView(R.id.cover)));
 
-        helper.addOnClickListener(R.id.travelGo);
+        helper.addOnClickListener(R.id.name);
         helper.addOnClickListener(R.id.cover_over);
     }
 

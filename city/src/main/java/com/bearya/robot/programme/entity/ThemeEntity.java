@@ -2,12 +2,12 @@ package com.bearya.robot.programme.entity;
 
 import android.util.Pair;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class ThemeEntity {
+public abstract class ThemeEntity implements Serializable {
 
     /**
      * 主题名称
@@ -31,7 +31,7 @@ public class ThemeEntity {
      */
     private final String tag;
 
-    private final Map<String, List<Pair<String, String>>> loads = new HashMap<>();
+    private final HashMap<String, List<Pair<String, String>>> loads = new HashMap<>();
 
     public ThemeEntity(String theme, String tag, String audio,String bgm) {
 
@@ -42,6 +42,8 @@ public class ThemeEntity {
 
         cover = "file:///android_asset/theme/cover/" + tag + ".webp";
         introduceCover = "file:///android_asset/theme/introduce/" + tag + ".webp";
+
+        onBuild();
 
     }
 
@@ -79,11 +81,9 @@ public class ThemeEntity {
     }
 
     /**
-     * 这里可以更多的小站数据
+     * 修建更多的小站道路的数据
      */
-    protected void moreStation() {
-
-    }
+    protected abstract void onBuild() ;
 
     public List<Pair<String, String>> fetch(int stationIndex) {
         List<Pair<String, String>> pairs = loads.get("station_" + stationIndex);

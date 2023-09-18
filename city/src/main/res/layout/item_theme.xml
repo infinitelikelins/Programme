@@ -21,56 +21,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/cover"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:scaleType="fitXY"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@drawable/earthquake_start" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/name"
-                android:layout_width="0dp"
-                android:layout_height="32dp"
-                android:background="@color/colorMasking"
-                android:gravity="center"
-                android:maxLines="1"
-                android:padding="4dp"
-                android:textAlignment="center"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:autoSizeTextType="uniform"
-                app:layout_constraintBottom_toBottomOf="@id/cover"
-                app:layout_constraintEnd_toEndOf="@id/cover"
-                app:layout_constraintStart_toStartOf="@id/cover"
-                tools:text="@tools:sample/full_names" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/cover"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/earthquake_start" />
 
     </androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/travelGo"
+        android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="@dimen/dp_40"
-        android:layout_margin="16dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/travel_go_btn_bg"
         android:gravity="center"
-        android:text="@string/travel_go"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
         android:textStyle="bold"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@id/cover_over"
         app:layout_constraintStart_toStartOf="@id/cover_over"
-        app:layout_constraintTop_toBottomOf="@id/cover_over" />
+        app:layout_constraintTop_toBottomOf="@id/cover_over"
+        tools:text="绿色环保·健康生活" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

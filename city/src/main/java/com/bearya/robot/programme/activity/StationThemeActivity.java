@@ -17,7 +17,7 @@ import com.bearya.robot.programme.repository.StationThemeRepository;
 import com.bearya.robot.programme.walk.car.LoadMgr;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
-public class StationThemeActivity extends BaseActivity implements BaseQuickAdapter.OnItemChildClickListener {
+public class StationThemeActivity extends BaseActivity implements BaseQuickAdapter.OnItemChildClickListener{
 
     public static void start(Context context) {
         context.startActivity(new Intent(context, StationThemeActivity.class));
@@ -60,14 +60,14 @@ public class StationThemeActivity extends BaseActivity implements BaseQuickAdapt
         ThemeEntity item = themeAdapter.getItem(position);
         assert item != null;
         int viewId = view.getId();
-        if (viewId == R.id.travelGo) {
+        if (viewId == R.id.name) {
             MusicUtil.stopBgMusic();
             LoadMgr.getInstance().clearStationLoadPlayData();
             LoadMgr.getInstance().setTag(item.getTag());
             GameActivity.start(this);
             finish();
         } else if (viewId == R.id.cover_over) {
-            StationThemeIntroduceActivity.start(this, item.getTag(), item.getAudio(), item.getBgm());
+            StationThemeIntroduceActivity.start(this, item);
         }
     }
 

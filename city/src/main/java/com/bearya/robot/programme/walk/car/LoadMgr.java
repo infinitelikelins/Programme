@@ -37,7 +37,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class LoadMgr implements ILoadMgr {
 
@@ -146,12 +145,11 @@ public class LoadMgr implements ILoadMgr {
     }
 
     public void clearStationLoadPlayData() {
-        ((StationLoad) Objects.requireNonNull(loads.get(StationBlueLoad.NAME))).clearOuterPlayData();
-        ((StationLoad) Objects.requireNonNull(loads.get(StationGreenLoad.NAME))).clearOuterPlayData();
-        ((StationLoad) Objects.requireNonNull(loads.get(StationYellowLoad.NAME))).clearOuterPlayData();
-        ((StationLoad) Objects.requireNonNull(loads.get(StationPinkLoad.NAME))).clearOuterPlayData();
-        ((StationLoad) Objects.requireNonNull(loads.get(StationPurpleLoad.NAME))).clearOuterPlayData();
-        ((StationLoad) Objects.requireNonNull(loads.get(StationRedLoad.NAME))).clearOuterPlayData();
+        for (BaseLoad value : loads.values()) {
+            if (value instanceof StationLoad) {
+                ((StationLoad) value).clearOuterPlayData();
+            }
+        }
     }
 
     public int getGoldNumber() {
