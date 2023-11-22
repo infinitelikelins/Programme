@@ -10,15 +10,8 @@ ext {
     city = [
             name       : "Programme",
             appid      : "com.bearya.robot.programme",
-            versionCode: 40505,
-            versionName: "4.5.5"
-    ]
-
-    fairystory = [
-            name       : "FairyStory",
-            appid      : "com.bearya.robot.fairystory",
-            versionCode: 50400,
-            versionName: "5.4.0"
+            versionCode: 40602,
+            versionName: "4.6.2"
     ]
 
 }

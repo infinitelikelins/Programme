@@ -35,7 +35,7 @@
             android:layout_alignParentRight="true"
             android:background="@mipmap/settings_voice_high" />
 
-        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+        <SeekBar
             android:id="@+id/seting_voice_seekbar"
             android:layout_width="342dp"
             android:layout_height="wrap_content"

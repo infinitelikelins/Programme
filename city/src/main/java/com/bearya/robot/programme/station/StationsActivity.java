@@ -41,7 +41,6 @@ public class StationsActivity extends BaseActivity implements View.OnClickListen
         }
         MusicUtil.playAssetsAudio("station/zh/station_init.mp3");
         stationLib = StationLib.getLibsFromAssets(getApplicationContext());
-        QdreamerAudio.getInstance().init(this);
     }
 
     @Override
@@ -63,6 +62,7 @@ public class StationsActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void onResume() {
         super.onResume();
+        QdreamerAudio.getInstance().init(this);
         loadHistory();
     }
 
