@@ -29,7 +29,7 @@ import java.io.File;
 
 public class StationSoundFragment extends BaseFragment implements MediaPlayer.OnCompletionListener {
     private static final int REQUEST_CODE_SOUND = 1001;
-    private static String FolderPath;
+    private String FolderPath;
     private ObjectAnimator animator;
     private String path;
     private TextView tvTimerRecord;
@@ -60,14 +60,11 @@ public class StationSoundFragment extends BaseFragment implements MediaPlayer.On
         }
     };
 
-    private ImageView ivSound;
-    private Button btnSoundLib;
-
     public static StationSoundFragment newInstance() {
         return new StationSoundFragment();
     }
 
-    public static void initFolderPath(Context context) {
+    private void initFolderPath(Context context) {
         File file = context.getExternalFilesDir(Environment.DIRECTORY_MUSIC);
         if (file == null) {
             throw new IllegalStateException("Failed to get external storage files directory");
@@ -121,7 +118,7 @@ public class StationSoundFragment extends BaseFragment implements MediaPlayer.On
 
     @Override
     protected void initView(View view) {
-        ivSound = view.findViewById(R.id.ivSound);
+        ImageView ivSound = view.findViewById(R.id.ivSound);
         ivSound.setOnClickListener(view13 -> {
             view13.setSelected(!view13.isSelected());
             if (view13.isSelected()) {
@@ -164,7 +161,7 @@ public class StationSoundFragment extends BaseFragment implements MediaPlayer.On
             tvTimerRecord.setText("");
             return true;
         });
-        btnSoundLib = view.findViewById(R.id.btnSoundLib);
+        Button btnSoundLib = view.findViewById(R.id.btnSoundLib);
         btnSoundLib.setOnClickListener(v -> {
             stopPlayRecord1();
             LibActivity.start(getActivity(), REQUEST_CODE_SOUND, false);
