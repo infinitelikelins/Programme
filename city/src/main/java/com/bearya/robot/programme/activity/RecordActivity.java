@@ -26,6 +26,12 @@ public class RecordActivity extends BaseActivity {
         MusicUtil.stopMusic();
         MusicUtil.stopBgMusic();
 
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+
         SharedPreferences sharedPreferences = getSharedPreferences("record", Context.MODE_PRIVATE);
         int gold = sharedPreferences.getInt("gold", 0);
         int step = sharedPreferences.getInt("step", 0);

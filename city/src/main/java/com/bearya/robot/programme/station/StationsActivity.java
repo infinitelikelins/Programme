@@ -15,7 +15,7 @@ import com.bearya.robot.programme.R;
 import com.bearya.robot.programme.activity.CityActivity;
 import com.bearya.robot.programme.activity.GameActivity;
 import com.bearya.robot.programme.view.DeleteConfirmPopup;
-import com.bearya.robot.qdreamer.QdreamerAudio;
+import com.bearya.robot.base.musicplayer.AudioRecorderManager;
 
 public class StationsActivity extends BaseActivity implements View.OnClickListener {
 
@@ -62,7 +62,6 @@ public class StationsActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void onResume() {
         super.onResume();
-        QdreamerAudio.getInstance().init(this);
         loadHistory();
     }
 
@@ -102,7 +101,7 @@ public class StationsActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        QdreamerAudio.getInstance().release();
+        AudioRecorderManager.getInstance().release();
         stationLib = null;
     }
 
@@ -112,4 +111,5 @@ public class StationsActivity extends BaseActivity implements View.OnClickListen
         MusicUtil.stopMusic();
         isClicked = false;
     }
+
 }

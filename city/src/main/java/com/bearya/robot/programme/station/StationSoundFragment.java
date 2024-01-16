@@ -20,7 +20,8 @@ import com.bearya.robot.base.play.PlayData;
 import com.bearya.robot.base.util.MusicUtil;
 import com.bearya.robot.base.util.ResourceUtil;
 import com.bearya.robot.programme.R;
-import com.bearya.robot.qdreamer.QdreamerAudio;
+import com.bearya.robot.base.musicplayer.AudioRecorderManager;
+import com.buihha.audiorecorder.Mp3Recorder;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
@@ -63,11 +64,7 @@ public class StationSoundFragment extends BaseFragment implements MediaPlayer.On
     private Button btnSoundLib;
 
     public static StationSoundFragment newInstance() {
-        StationSoundFragment f = new StationSoundFragment();
-        Bundle b = new Bundle();
-
-        f.setArguments(b);
-        return f;
+        return new StationSoundFragment();
     }
 
     public static void initFolderPath(Context context) {
@@ -89,17 +86,32 @@ public class StationSoundFragment extends BaseFragment implements MediaPlayer.On
         FolderPath = file.getAbsolutePath();
     }
 
-    public static String genFilePath(Context context) {
-        if (FolderPath == null) {
-            initFolderPath(context);
-        }
-        return String.format("%s/%d.wav", FolderPath, System.currentTimeMillis());
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initFolderPath(requireContext());
+        AudioRecorderManager.getInstance().init(new Mp3Recorder.OnRecordListener() {
+            @Override
+            public void onStart() {
+                handler.post(recordTimerRunnable);
+            }
+
+            @Override
+            public void onStop() {
+                ivPreView.setImageResource(R.drawable.ic_listener_selector);
+                handler.removeCallbacks(recordTimerRunnable);
+            }
+
+            @Override
+            public void onRecording(int sampleRate, double volume) {
+
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
     }
 
     @Override
@@ -186,7 +198,6 @@ public class StationSoundFragment extends BaseFragment implements MediaPlayer.On
     private void loadSystemSoundConfig(final LibItem soundItem) {
         try {
             Glide.with(getActivity()).load(ResourceUtil.getMipmapId(soundItem.image)).centerCrop()
-//                        .placeholder(R.mipmap.ic_sound_default)
                     .bitmapTransform(new GlideCircleTransform(getActivity())).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE)
                     .into(ivPreView);
         } catch (Exception e) {
@@ -197,16 +208,13 @@ public class StationSoundFragment extends BaseFragment implements MediaPlayer.On
     }
 
     private void stopRecord() {
-        QdreamerAudio.getInstance().stop();
-        ivPreView.setImageResource(R.drawable.ic_listener_selector);
-        handler.removeCallbacks(recordTimerRunnable);
+        AudioRecorderManager.getInstance().stop();
     }
 
     private void startRecord() {
         stopPlayRecord();
-        path = genFilePath(requireContext());
-        QdreamerAudio.getInstance().startRecord(path);
-        handler.post(recordTimerRunnable);
+        path = FolderPath + "/" + System.currentTimeMillis() + ".mp3";
+        AudioRecorderManager.getInstance().startRecord(FolderPath, System.currentTimeMillis() + ".mp3");
     }
 
     @Override
@@ -290,9 +298,8 @@ public class StationSoundFragment extends BaseFragment implements MediaPlayer.On
 
     private void deleteFile(String sound) {
         try {
-            if (sound.contains("storage/")) {
+            if (sound.contains("storage/"))
                 new File(sound).delete();
-            }
         } catch (Exception ignored) {
 
         }
