@@ -48,8 +48,8 @@ public class StationImageFragment extends BaseFragment implements View.OnClickLi
             PlayData station = getStation();
             if (station != null) {
                 station.facePlay = null;
+                saveStation();
             }
-            saveStation();
             ivPreView.setVisibility(View.GONE);
             ivPreView.setImageResource(0);
             return true;

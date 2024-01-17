@@ -104,4 +104,10 @@ public class MusicUtil {
             }
         }
     }
+
+    public static boolean isPlaying() {
+        return (localMusicPlayer != null && localMusicPlayer.isPlaying()) ||
+                (localMusicPlayerBg != null && localMusicPlayerBg.isPlaying());
+    }
+
 }

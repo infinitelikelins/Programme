@@ -25,7 +25,11 @@ public class AudioRecorderManager {
         mp3Recorder.setOnRecordListener(onRecordListener);
     }
 
-    public void startRecord(String filePath,String fileName) {
+    public boolean isRecording() {
+        return mp3Recorder.isRecording();
+    }
+
+    public void startRecord(String filePath, String fileName) {
         try {
             if (mp3Recorder.isRecording()) {
                 mp3Recorder.stopRecording();

@@ -12,15 +12,17 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
+
+import com.bearya.robot.base.musicplayer.AudioRecorderManager;
 import com.bearya.robot.base.play.PlayData;
 import com.bearya.robot.base.util.MusicUtil;
 import com.bearya.robot.base.util.ResourceUtil;
 import com.bearya.robot.programme.R;
-import com.bearya.robot.base.musicplayer.AudioRecorderManager;
 import com.buihha.audiorecorder.Mp3Recorder;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -33,30 +35,17 @@ public class StationSoundFragment extends BaseFragment implements MediaPlayer.On
     private ObjectAnimator animator;
     private String path;
     private TextView tvTimerRecord;
-    private TextView tvTimerPreview;
     private ImageView ivPreView;
+    private AppCompatImageView ivSound;
+
     private int longTime;
-    private long previewLongTime;
-    private Handler handler = new Handler();
-    private Runnable recordTimerRunnable = new Runnable() {
+    private final Handler handler = new Handler();
+    private final Runnable recordTimerRunnable = new Runnable() {
         @Override
         public void run() {
             longTime++;
-            previewLongTime = longTime;
             tvTimerRecord.setText(String.format("录音中\n%d S", longTime));
             handler.postDelayed(this, 1000);
-        }
-    };
-    private Runnable previewTimerRunnable = new Runnable() {
-        @Override
-        public void run() {
-            previewLongTime--;
-            tvTimerPreview.setText(String.format("播放中\n%d S", previewLongTime));
-            if (previewLongTime > 0) {
-                handler.postDelayed(this, 1000);
-            } else {
-                stopPlayRecord();
-            }
         }
     };
 
@@ -91,12 +80,22 @@ public class StationSoundFragment extends BaseFragment implements MediaPlayer.On
             @Override
             public void onStart() {
                 handler.post(recordTimerRunnable);
+                ivPreView.setImageResource(R.drawable.ic_listener_selector);
+                ivPreView.setVisibility(View.GONE);
             }
 
             @Override
             public void onStop() {
-                ivPreView.setImageResource(R.drawable.ic_listener_selector);
+                PlayData station = getStation();
+                if (station!=null){
+                    station.sound = path;
+                    station.soundLongTime = longTime;
+                    saveStation();
+                }
                 handler.removeCallbacks(recordTimerRunnable);
+                longTime = 0;
+                tvTimerRecord.setText("");
+                ivPreView.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -118,26 +117,19 @@ public class StationSoundFragment extends BaseFragment implements MediaPlayer.On
 
     @Override
     protected void initView(View view) {
-        ImageView ivSound = view.findViewById(R.id.ivSound);
+        tvTimerRecord = view.findViewById(R.id.tvSecondRecord);
+        ivPreView = view.findViewById(R.id.ivPreView);
+        ivSound = view.findViewById(R.id.ivSound);
+        AppCompatTextView btnSoundLib = view.findViewById(R.id.btnSoundLib);
+
         ivSound.setOnClickListener(view13 -> {
             view13.setSelected(!view13.isSelected());
             if (view13.isSelected()) {
                 startRecord();
             } else {
                 stopRecord();
-                showLastRecord(path, longTime);
-                PlayData station = getStation();
-                if (station != null) {
-                    station.sound = path;
-                    station.soundLongTime = longTime;
-                }
-                longTime = 0;
             }
         });
-
-        ivPreView = view.findViewById(R.id.ivPreView);
-        tvTimerRecord = view.findViewById(R.id.tvSecondRecord);
-        tvTimerPreview = view.findViewById(R.id.tvSecondPreview);
         ivPreView.setOnClickListener(view12 -> {
             view12.setSelected(!view12.isSelected());
             if (view12.isSelected()) {
@@ -146,7 +138,6 @@ public class StationSoundFragment extends BaseFragment implements MediaPlayer.On
                 stopPlayRecord();
             }
         });
-
         ivPreView.setOnLongClickListener(view1 -> {
             MusicUtil.stopMusic();
             PlayData station = getStation();
@@ -154,26 +145,16 @@ public class StationSoundFragment extends BaseFragment implements MediaPlayer.On
                 deleteFile(station.sound);
                 station.sound = "";
                 station.soundLongTime = 0;
+                saveStation();
             }
-            saveStation();
             ivPreView.setVisibility(View.GONE);
-            tvTimerPreview.setText("");
-            tvTimerRecord.setText("");
             return true;
         });
-        Button btnSoundLib = view.findViewById(R.id.btnSoundLib);
         btnSoundLib.setOnClickListener(v -> {
-            stopPlayRecord1();
+            MusicUtil.stopMusic();
+            stopRotate();
             LibActivity.start(getActivity(), REQUEST_CODE_SOUND, false);
         });
-    }
-
-    private void showLastRecord(String filePath, long time) {
-        if (TextUtils.isEmpty(path)) {
-            path = filePath;
-        }
-        ivPreView.setVisibility(View.VISIBLE);
-        tvTimerRecord.setText("");
     }
 
     @Override
@@ -181,8 +162,8 @@ public class StationSoundFragment extends BaseFragment implements MediaPlayer.On
         PlayData station = getStation();
         if (station != null && !TextUtils.isEmpty(station.sound)) {
             if (station.soundLongTime > 0) {
-                previewLongTime = station.soundLongTime;
-                showLastRecord(station.sound, station.soundLongTime);
+                ivPreView.setVisibility(View.VISIBLE);
+                path = station.sound;
             } else {
                 LibItem item = StationsActivity.stationLib.getSoundItemByMp3(station.sound);
                 if (item != null) {
@@ -209,6 +190,10 @@ public class StationSoundFragment extends BaseFragment implements MediaPlayer.On
     }
 
     private void startRecord() {
+        if (MusicUtil.isPlaying()) {
+            MusicUtil.stopMusic();
+            MusicUtil.stopBgMusic();
+        }
         stopPlayRecord();
         path = FolderPath + "/" + System.currentTimeMillis() + ".mp3";
         AudioRecorderManager.getInstance().startRecord(FolderPath, System.currentTimeMillis() + ".mp3");
@@ -229,7 +214,7 @@ public class StationSoundFragment extends BaseFragment implements MediaPlayer.On
     @Override
     public void onCompletion(MediaPlayer mediaPlayer) {
         ivPreView.setSelected(false);
-        stopPlayRecord1();
+        stopRotate();
     }
 
     private void startRotate() {
@@ -252,15 +237,18 @@ public class StationSoundFragment extends BaseFragment implements MediaPlayer.On
         ivPreView.setRotation(0);
     }
 
-    private void stopPlayRecord1() {
-        MusicUtil.stopMusic();
-        stopRotate();
-    }
-
     /**
      * 播放MP3
      */
     private void playRecord() {
+        if (AudioRecorderManager.getInstance().isRecording()) {
+            AudioRecorderManager.getInstance().stop();
+        } else {
+            longTime = 0;
+            tvTimerRecord.setText("");
+            ivPreView.setVisibility(View.VISIBLE);
+            handler.removeCallbacks(recordTimerRunnable);
+        }
         try {
             MusicUtil.play(path, this);
             startRotate();
@@ -272,7 +260,6 @@ public class StationSoundFragment extends BaseFragment implements MediaPlayer.On
 
     private void stopPlayRecord() {
         MusicUtil.stopMusic();
-        handler.removeCallbacks(previewTimerRunnable);
         ivPreView.setSelected(false);
         stopRotate();
         loadLastStationConfig();

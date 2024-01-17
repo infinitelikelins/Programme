@@ -3,6 +3,7 @@ package com.bearya.robot.programme.station;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,6 +25,7 @@ import com.bearya.robot.programme.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 
+import java.io.File;
 import java.util.Locale;
 
 public class StationConfigActivity extends BaseActivity implements View.OnClickListener {
@@ -177,6 +179,9 @@ public class StationConfigActivity extends BaseActivity implements View.OnClickL
         for (int i = 1; i <= 6; i++) {
             SharedPreferencesUtil.getInstance(context.getApplicationContext()).remove(getStationKey(i));
         }
+        File file = context.getExternalFilesDir(Environment.DIRECTORY_MUSIC);
+        if (file != null && file.exists())
+            file.delete();
     }
 
     private static class Tab {
