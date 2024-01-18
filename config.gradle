@@ -10,8 +10,8 @@ ext {
     city = [
             name       : "Programme",
             appid      : "com.bearya.robot.programme",
-            versionCode: 50001,
-            versionName: "5.0.1"
+            versionCode: 50002,
+            versionName: "5.0.2"
     ]
 
 }
